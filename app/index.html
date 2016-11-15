@@ -36,6 +36,17 @@
           <button>Submit</button>
         </p>
       </form>
+
+      <h3>All Gifs</h3>
+
+      <ul>
+        <li ng-repeat="gif in gifs">
+          <h3>{{ gif.name }}</h3>
+          <p>{{ gif.email }}</p>
+          <p>{{ gif.message }}</p>
+          <img src="{{ gif.url }}" />
+        </li>
+      </ul>
       
     </div>
     <script src="js/bundle.js"></script>
