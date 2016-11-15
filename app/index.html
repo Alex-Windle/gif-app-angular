@@ -8,8 +8,35 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body ng-app="app">
-    <div class="container">
+    <div class="container" ng-controller="GifController">
       <p>Gif App</p>
+    
+      <form>
+        <label class="label">Name</label>
+        <p class="control">
+          <input class="input" type="text">
+        </p>
+
+        <label class="label">Email</label>
+        <p class="control">
+          <input class="input" type="text">
+        </p>
+
+        <label class="label">URL</label>
+        <p class="control">
+          <input class="input" type="text">
+        </p>
+
+        <label class="label">Message</label>
+        <p class="control">
+          <textarea class="textarea"></textarea>
+        </p>
+
+        <p class="control">
+          <button>Submit</button>
+        </p>
+      </form>
+      
     </div>
     <script src="js/bundle.js"></script>
   </body>
