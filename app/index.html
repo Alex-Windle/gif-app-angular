@@ -11,25 +11,25 @@
     <div class="container" ng-controller="GifController">
       <p>Gif App</p>
     
-      <form>
+      <form ng-submit="addGif(gif)">
         <label class="label">Name</label>
         <p class="control">
-          <input class="input" type="text">
+          <input class="input" type="text" ng-model="gif.name">
         </p>
 
         <label class="label">Email</label>
         <p class="control">
-          <input class="input" type="text">
+          <input class="input" type="text" ng-model="gif.email">
         </p>
 
         <label class="label">URL</label>
         <p class="control">
-          <input class="input" type="text">
+          <input class="input" type="text" ng-model="gif.url">
         </p>
 
         <label class="label">Message</label>
         <p class="control">
-          <textarea class="textarea"></textarea>
+          <textarea class="textarea" ng-model="gif.message"></textarea>
         </p>
 
         <p class="control">
