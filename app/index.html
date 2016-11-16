@@ -14,22 +14,26 @@
       <form ng-submit="addGif(gif)">
         <label class="label">Name</label>
         <p class="control">
-          <input class="input" type="text" ng-model="gif.name">
+          <input class="input" type="text" ng-model="gif.name" ng-blur="validateName(gif.name)">
+          <span>{{ errors.name }}</span>
         </p>
 
         <label class="label">Email</label>
         <p class="control">
-          <input class="input" type="text" ng-model="gif.email">
+          <input class="input" type="text" ng-model="gif.email" ng-keyup="validateEmail(gif.email)">
+          <span>{{ errors.email }}</span>
         </p>
 
         <label class="label">URL</label>
         <p class="control">
-          <input class="input" type="text" ng-model="gif.url">
+          <input class="input" type="text" ng-model="gif.url" ng-keyup="validateURL(gif.url)">
+          <span>{{ errors.url }}</span>
         </p>
 
         <label class="label">Message</label>
         <p class="control">
-          <textarea class="textarea" ng-model="gif.message"></textarea>
+          <textarea class="textarea" ng-model="gif.message" ng-blur="validateMessage(gif.message)"></textarea>
+          <span>{{ errors.message }}</span>
         </p>
 
         <p class="control">
@@ -45,6 +49,7 @@
           <p>{{ gif.email }}</p>
           <p>{{ gif.message }}</p>
           <img src="{{ gif.url }}" />
+          <button ng-submit="deleteGif(gif)">Delete</button>
         </li>
       </ul>
       
