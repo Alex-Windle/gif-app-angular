@@ -44,15 +44,14 @@ $scope.errors = {};
 	// 	}
 	// }; 
 
-	// $scope.validateMessage = function(message){
-	// 	if (message === undefined){
-	// 		$scope.errors.message = "You must include a message."; 
-	// 		return false; 
-	// 	} else {
-	// 		return true;
-	// 	}
-
-	// };
+	$scope.validateMessage = function(message){
+		if (message === undefined || message === ''){
+			$scope.errors.message = "You must include a message."; 
+			return false; 
+		} else {
+			return true;
+		}
+	};
 
 	// $scope.validateForm = function (){
 	// 	if ($scope.validateName(gif.name) && $scope.validateURL(gif.url) 
@@ -64,7 +63,7 @@ $scope.errors = {};
 	// }; 
 
 	$scope.addGif = function (gif) {
-		if ($scope.validateName(gif.name)) {
+		if ($scope.validateName(gif.name) && $scope.validateMessage(gif.message)) {
 			$http.post(SERVER_URL, gif).then(function(response){
 				let gif = response.data;
 				$scope.gifs.push(gif); 
