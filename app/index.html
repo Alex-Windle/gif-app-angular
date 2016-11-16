@@ -38,6 +38,7 @@
 
         <p class="control">
           <button>Submit</button>
+          <span>{{ errors.submit }}</span>
         </p>
       </form>
 
@@ -50,7 +51,7 @@
             <p>{{ gif.email }}</p>
             <p>{{ gif.message }}</p>
             <img src="{{ gif.url }}" />
-            <button ng-submit="deleteGif(gif)">Delete</button>
+            <button ng-click="deleteGif(gif)">Delete</button>
           </li>
         </ul>
       </div>

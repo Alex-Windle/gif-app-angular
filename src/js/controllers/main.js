@@ -1,9 +1,12 @@
+// Debug addGif error / console.log message & validation function 	----OK!
+// Debug delete functionality. How does the server const work? 		----Try it. It should work now! 
+// Debug error ( Line 96 , import , export ) 						----CURLY BRACES
+
 const SERVER_URL = 'https://class-server.herokuapp.com/collections/alex-gifs-app/'; 
 
 function GifController ($scope, $http) {
 $scope.gifs = []; 
 $scope.errors = {}; 
-// var form = false;
 
 	function init(){
 		$http.get(SERVER_URL).then(function(response){
@@ -55,38 +58,45 @@ $scope.errors = {};
 		} else {
 			return true;
 		}
-	};
-
-	// var validateForm  = function (form){
-	// 	if ($scope.validateName(gif.name) && $scope.validateURL(gif.url) 
-	// 		&& $scope.validateEmail(gif.email) && $scope.validateMessage(gif.message)) {
-	// 		form = true;
-	// 	} else {
-	// 		form = false;
-	// 	}
-	// }; 
-
-	// validateForm(); 
+	}; 
 
 	$scope.addGif = function (gif) {
+		var addForm = false;
+
 		if ($scope.validateName(gif.name) && $scope.validateURL(gif.url) 
 			&& $scope.validateEmail(gif.email) && $scope.validateMessage(gif.message)) {
+			console.log('addGif runs the validation block (1 of 3)'); 
+			addForm = true;
+		} 
+
+		if (addForm) {
 			$http.post(SERVER_URL, gif).then(function(response){
+				console.log('addGif runs the POST block (2 of 3)'); 
 				let gif = response.data;
 				$scope.gifs.push(gif); 
 			});
+		} else {
+			console.log('addGif runs the else block (3 of 3)'); 
+			$scope.errors.submit = "The form cannot be submitted with 1 or more missing fields.";
 		}; 
 	};
 
-// 	$scope.deleteGif = function (gif){
-// 		$http.delete(SERVER_URL + gif._id).then(function(){
-// 			$scope.gifs = $scope.gifs.filter(function(x){
-// 				return x._id !== gif._id;
-// 			});
-// 		}); 
-// 	}; 
+	$scope.deleteGif = function(gif){
+		console.log("Deleted gif -->", gif); 
+		$http.delete(SERVER_URL + gif._id).then(function(response){
+			console.log("DB response -->", response); 
+		}); 
+	};
 
-// }; 
+	// $scope.deleteGif = function (gif){
+	// 	$http.delete(SERVER_URL + gif._id).then(function(){
+	// 		$scope.gifs = $scope.gifs.filter(function(x){
+	// 			return x._id !== gif._id;
+	// 		});
+	// 	}); 
+	// }; 
+
+}; 
 
 GifController.$inject = ['$scope', '$http'];
 export { GifController }; 
