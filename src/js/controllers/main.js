@@ -78,16 +78,15 @@ $scope.errors = {};
 		}; 
 	};
 
-	// $scope.deleteGif = function (){
-	// 	$http.delete(SERVER_URL + gif._id).then(function(response){
-	// 		console.log(response); 
-	// 		$scope.gifs = $scope.gifs.filter(function(x){
-	// 			return x._id !== gif._id;
-	// 		});
-	// 	}); 
-	// }; 
+// 	$scope.deleteGif = function (gif){
+// 		$http.delete(SERVER_URL + gif._id).then(function(){
+// 			$scope.gifs = $scope.gifs.filter(function(x){
+// 				return x._id !== gif._id;
+// 			});
+// 		}); 
+// 	}; 
 
-}; 
+// }; 
 
 GifController.$inject = ['$scope', '$http'];
 export { GifController }; 

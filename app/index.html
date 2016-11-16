@@ -9,7 +9,7 @@
   </head>
   <body ng-app="app">
     <div class="container" ng-controller="GifController">
-      <p>Gif App</p>
+      <h3>Submit a Gif</h3>
     
       <form ng-submit="addGif(gif)">
         <label class="label">Name</label>
@@ -41,17 +41,19 @@
         </p>
       </form>
 
-      <h3>All Gifs</h3>
+      <div class="list">
+        <h3>Gif List</h3>
 
-      <ul>
-        <li ng-repeat="gif in gifs">
-          <h3>{{ gif.name }}</h3>
-          <p>{{ gif.email }}</p>
-          <p>{{ gif.message }}</p>
-          <img src="{{ gif.url }}" />
-          <button ng-submit="deleteGif(gif)">Delete</button>
-        </li>
-      </ul>
+        <ul>
+          <li ng-repeat="gif in gifs">
+            <h2>{{ gif.name }}</h2>
+            <p>{{ gif.email }}</p>
+            <p>{{ gif.message }}</p>
+            <img src="{{ gif.url }}" />
+            <button ng-submit="deleteGif(gif)">Delete</button>
+          </li>
+        </ul>
+      </div>
       
     </div>
     <script src="js/bundle.js"></script>
