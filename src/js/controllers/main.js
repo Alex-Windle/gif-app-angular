@@ -1,7 +1,3 @@
-// Debug addGif error / console.log message & validation function 	----OK!
-// Debug delete functionality. How does the server const work? 		----Try it. It should work now! 
-// Debug error ( Line 96 , import , export ) 						----CURLY BRACES
-
 const SERVER_URL = 'https://class-server.herokuapp.com/collections/alex-gifs-app/'; 
 
 function GifController ($scope, $http) {
@@ -38,33 +34,12 @@ $scope.errors = {};
 		}
 
 		return true;
-	}; 
-
-	$scope.validateEmail = function(email){
-		console.log('email', email); 
-
-		if(!email.includes('@') || email === undefined || email === ''){
-			$scope.errors.email = "Must be a valid email including @ symbol."; 
-			return false;
-		}
-
-		return true;
-	}; 
-
-	$scope.validateMessage = function(message){
-		if (message === undefined || message === ''){
-			$scope.errors.message = "You must include a message."; 
-			return false; 
-		} else {
-			return true;
-		}
-	}; 
+	};  
 
 	$scope.addGif = function (gif) {
 		var addForm = false;
 
-		if ($scope.validateName(gif.name) && $scope.validateURL(gif.url) 
-			&& $scope.validateEmail(gif.email) && $scope.validateMessage(gif.message)) {
+		if ($scope.validateName(gif.name) && $scope.validateURL(gif.url)) {
 			console.log('addGif runs the validation block (1 of 3)'); 
 			addForm = true;
 		} 
@@ -86,16 +61,7 @@ $scope.errors = {};
 		$http.delete(SERVER_URL + gif._id).then(function(response){
 			console.log("DB response -->", response); 
 		}); 
-	};
-
-	// $scope.deleteGif = function (gif){
-	// 	$http.delete(SERVER_URL + gif._id).then(function(){
-	// 		$scope.gifs = $scope.gifs.filter(function(x){
-	// 			return x._id !== gif._id;
-	// 		});
-	// 	}); 
-	// }; 
-
+	}; 
 }; 
 
 GifController.$inject = ['$scope', '$http'];
